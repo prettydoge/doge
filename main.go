@@ -1,10 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"github.com/cbrgm/githubevents/githubevents"
 	"github.com/go-ini/ini"
-	"github.com/google/go-github/v48/github"
+	"github.com/google/go-github/v47/github"
 	"go.uber.org/zap"
 	"log"
 	"net/http"
@@ -64,7 +63,7 @@ func main() {
 	})
 
 	// start the server listening on port
-	if err := http.ListenAndServe(":"+port, nil); err != nil {
+	if err := http.ListenAndServe(":"+string(port), nil); err != nil {
 		panic(err)
 	}
 }

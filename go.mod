@@ -1,6 +1,6 @@
 module doge
 
-go 1.19
+go 1.13
 
 require (
 	github.com/cbrgm/githubevents v1.5.0
