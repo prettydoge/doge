@@ -53,7 +53,6 @@ func main() {
 			sugar.Infow("received PushEvent...",
 				"Repo", e.Repo.Name,
 				"RepoURL", e.Repo.URL,
-				"Action", e.Action,
 				"Sender", e.Sender.Login,
 			)
 			// todo git pull & build app
