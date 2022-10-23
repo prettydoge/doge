@@ -37,7 +37,7 @@ func init() {
 
 func main() {
 	// create a new event handler
-	handle := githubevents.New("secretkey")
+	handle := githubevents.New(secret)
 
 	// add callbacks
 	handle.OnPushEventAny(
