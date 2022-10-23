@@ -86,12 +86,16 @@ func deploy() {
 	if err != nil {
 		sugar.Errorln("git pull fail:", err)
 	    return;
+	} else {
+		sugar.Info("Git pull done.")
 	}
 	cmd = exec.Command("go", "build", "-o", "webhook", "main.go")
 	err = cmd.Run()
 	if err != nil {
 		sugar.Errorln("go build fail:", err)
 	    return;
+	} else {
+		sugar.Info("Go build done.")
 	}
 	cmd = exec.Command(deploy_bash)
 	stdoutStuderr, err := cmd.CombinedOutput()
