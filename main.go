@@ -37,7 +37,7 @@ func init() {
 	}
 	logger, err = log_cfg.Build()
 	if err != nil {
-		log.Fatalf("can't initialize zap logger: %v", err)
+		log.Fatalf("Can't initialize zap logger: %v", err)
 	}
 	sugar = logger.Sugar()
 }
@@ -50,7 +50,7 @@ func main() {
 	handle.OnPushEventAny(
 		func(deliveryID string, eventName string, e *github.PushEvent) error {
 			defer sugar.Sync()
-			sugar.Infow("received PushEvent...",
+			sugar.Infow("Received PushEvent...",
 				"Repo", e.Repo.Name,
 				"RepoURL", e.Repo.URL,
 				"Sender", e.Sender.Login,
@@ -68,7 +68,7 @@ func main() {
 		err := handle.HandleEventRequest(r)
 		if err != nil {
 			defer sugar.Sync()
-			sugar.Errorln("handle webhook fail:", err)
+			sugar.Errorln("Handle webhook fail:", err)
 		}
 	})
 
@@ -80,7 +80,7 @@ func main() {
 
 func deploy() {
 	defer sugar.Sync()
-	sugar.Info("start to deploy...")
+	sugar.Info("Start to deploy...")
 	cmd := exec.Command("git", "pull", "origin", "master")
 	err := cmd.Run()
 	if err != nil {
@@ -96,8 +96,8 @@ func deploy() {
 	cmd = exec.Command(deploy_bash)
 	stdoutStuderr, err := cmd.CombinedOutput()
 	if err != nil {
-		sugar.Errorln("deploy fail:", err)
+		sugar.Errorln("Deploy fail:", err)
 	} else {
-		sugar.Infof("finish deploy: %s", string(stdoutStuderr))
+		sugar.Infof("Finish deploy: %s", string(stdoutStuderr))
 	}
 }
