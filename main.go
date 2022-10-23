@@ -50,9 +50,9 @@ func main() {
 	handle.OnPushEventAny(
 		func(deliveryID string, eventName string, e *github.PushEvent) error {
 			defer sugar.Sync()
-			sugar.Infow("received PushEvent: %s",
+			sugar.Infow("received PushEvent:",
 				"Repo", e.Repo.Name,
-				"PushID", e.PushID,
+				"RepoURL", e.Repo.URL,
 				"Action", e.Action,
 				"Sender", e.Sender.Login,
 			)
