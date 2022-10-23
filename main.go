@@ -82,7 +82,13 @@ func main() {
 func deploy() {
 	defer sugar.Sync()
 	sugar.Info("start to deploy...")
-	cmd := exec.Command(deploy_bash)
+	cmd := exec.Command("git", "pull", "origin", "master")
+	err := cmd.Run()
+	if err != nil {
+		sugar.Errorln("git pull fail:", err)
+	    return;
+	}
+	cmd = exec.Command(deploy_bash)
 	stdoutStuderr, err := cmd.CombinedOutput()
 	if err != nil {
 		sugar.Errorln("deploy fail:", err)
