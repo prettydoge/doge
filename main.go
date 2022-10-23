@@ -55,7 +55,7 @@ func main() {
 	)
 
 	// add a http handleFunc
-	http.HandleFunc("/hook", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/git-api/hook", func(w http.ResponseWriter, r *http.Request) {
 		err := handle.HandleEventRequest(r)
 		if err != nil {
 			defer logger.Sync()
