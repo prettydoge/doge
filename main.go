@@ -7,6 +7,7 @@ import (
 	"go.uber.org/zap"
 	"log"
 	"net/http"
+	"fmt"
 )
 
 var (
@@ -61,9 +62,8 @@ func main() {
 			sugar.Errorln("handle webhook fail:", err)
 		}
 	})
-
 	// start the server listening on port
-	if err := http.ListenAndServe(":"+string(port), nil); err != nil {
+	if err := http.ListenAndServe(fmt.Sprintf(":%v", port), nil); err != nil {
 		panic(err)
 	}
 }
