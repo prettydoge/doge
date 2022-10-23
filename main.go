@@ -91,6 +91,7 @@ func deploy() {
 	stdoutStuderr, err := cmd.CombinedOutput()
 	if err != nil {
 		sugar.Errorln("deploy fail:", err)
+	} else {
+		sugar.Infof("finish deploy: %s", string(stdoutStuderr))
 	}
-	sugar.Infof("finish deploy: %s", string(stdoutStuderr))
 }
