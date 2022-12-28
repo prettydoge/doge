@@ -98,7 +98,7 @@ func deploy() {
 		sugar.Info("Go build done.")
 	}
 	cmd = exec.Command(deploy_bash)
-	stdoutStuderr, err := cmd.CombinedOutput()
+	stdoutStuderr, err := cmd.CombinedOutput()// todo kill -9 会导致无法进行下面的逻辑
 	if err != nil {
 		sugar.Errorln("Deploy fail:", err)
 	} else {
